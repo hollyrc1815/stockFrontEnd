@@ -1,0 +1,35 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Stocks List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Stock Name</th>
+            <th>CEO</th>
+            <th>Website</th>
+            <th>Price</th>
+            <th>Turnover</th>
+            <th>Stock Exchange</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of stocks | async">
+            <td>{{stock.id}}</td>
+            <td>{{stock.name}}</td>
+            <td>{{stock.ceo}}</td>
+            <td>{{stock.website}}</td>
+            <td>{{stock.price}}</td>
+            <td>{{stock.turnover}}</td>
+            <td>{{stock.stockexchange}}</td>
+
+            <td><button (click)="deleteStock(stock.id)" class="btn btn-danger">Delete</button>
+                <button (click)="stockDetails(stock.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

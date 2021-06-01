@@ -1,0 +1,85 @@
+<h2>Stock Details</h2> 
+
+<hr/>
+<div *ngIf="stock">
+  <div>
+        <label><b>Symbol: </b></label> {{stock.id}}
+  </div>  
+  <div>
+    <label><b>Name: </b></label> {{stock.name}}
+  </div>
+  <div>
+    <label><b>CEO: </b></label> {{stock.ceo}}
+  </div>
+  <div>
+    <label><b>Website: </b></label> {{stock.website}}
+  </div>  
+  <div>
+    <label><b>Current Price: </b></label> {{stock.price}}
+  </div>  
+  <div>
+    <label><b>Turn Over: </b></label> {{stock.turnover}}
+  </div>  
+  <div>
+    <label><b>Stock Exchange: </b></label> {{stock.stockexchange}}
+  </div>  
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Stock List</button><br>
+
+<div class="container">
+  <h1 class="heading"><strong>See Stock Prices </strong></h1>
+  <div class="form-group">
+
+     <label for="pageNo">Start Date</label>
+     <input type="date" class="form-control" name="date01" [(ngModel)]="date01">
+
+     <label for="sortOn">End date</label>
+     <input type="date" class="form-control" name="date02" [(ngModel)]="date02">
+  </div>
+
+  <div class="form-group">
+      <button type="button" (click)="getStockPrices()">Get Prices</button>
+  </div>
+
+  <div *ngIf="loading">loading...</div>
+  
+  <div *ngIf="errorMessage" class="alert alert-warning">
+     <strong>Warning!</strong> {{errorMessage}}
+  </div>
+
+  <div class='table-responsive'>
+          <table class='table'>
+              <thead>
+                  <tr>
+                      <th>Symbol</th>
+                      <th>Date</th>
+                      <th>Open</th>
+                      <th>High</th>
+                      <th>Low</th>
+                      <th>Close</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let StockPrices of StockPrices;">
+                    <tr>
+                      <!-- <td>{{Stocks.id}} </td>
+                      <td>{{Stocks.date}}</td>
+                      <td>{{Stocks.open}}</td>
+                      <td>{{Stocks.close}}</td> -->
+                      <td>{{stock.id}}</td>
+                      <td>2017-01-05</td>
+                      <td>120.2</td>
+                      <td>156.1</td>
+                      <td>119.7</td>
+                      <td>120.2</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  <!-- <pre>{{StockPrices | json}}</pre> -->
+</div>
+
+
